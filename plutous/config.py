@@ -2,6 +2,7 @@ import os
 
 import yaml
 from pydantic import BaseModel
+from typing_extensions import Self
 
 
 class BaseConfig(BaseModel):
@@ -10,7 +11,7 @@ class BaseConfig(BaseModel):
     @classmethod
     def from_file(
         cls, path: str = os.environ.get("PLUTOUS_CONFIG_PATH", "./plutous.yaml")
-    ) -> "BaseConfig":
+    ) -> Self:
         with open(path, "r") as f:
             data: dict = yaml.safe_load(f)
             section = cls.__section__.split("/")
@@ -31,5 +32,6 @@ class Db(BaseModel):
 
 class Config(BaseConfig):
     db: Db
+
 
 config = Config.from_file()
