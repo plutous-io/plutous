@@ -25,7 +25,7 @@ class BaseConfig(BaseModel):
 class Db(BaseModel):
     host: str
     port: int
-    user: str
+    username: str
     password: str
     database: str
 
