@@ -2,10 +2,9 @@ from pathlib import Path
 
 from alembic import command
 from alembic.config import Config as AlembicConfig
+from loguru import logger
 from sqlalchemy import MetaData, create_engine, text
 from sqlalchemy.engine import URL
-
-from loguru import logger
 
 from plutous.config import config
 
@@ -61,3 +60,13 @@ def upgrade(directory: Path, revision: str = "head", **kwargs):
 def downgrade(directory: Path, revision: str, **kwargs):
     alembic_cfg = _get_alembic_config(directory)
     command.downgrade(alembic_cfg, revision, **kwargs)
+
+
+def reset(schema:str):
+    sql = f'''
+    DROP SCHEMA "{schema}" CASCADE;
+    '''
+    
+    with engine.connect() as conn:
+        conn.execute(text(sql))
+        conn.commit()

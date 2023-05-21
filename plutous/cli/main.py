@@ -18,14 +18,18 @@ for a in apps:
 def start_server(
     host: str = "0.0.0.0",
     port: int = 8080,
-    # reload: bool = True,
-    # reload_dirs: list = ["plutous"],
+    workers: int = 2,
+    reload: bool = True,
 ):
     import uvicorn
 
-    from plutous.app.main import app
-
-    uvicorn.run(app, host=host, port=port)
+    uvicorn.run(
+        "plutous.app.main:app",
+        host=host,
+        port=port,
+        workers=workers,
+        reload=reload,
+    )
 
 
 if __name__ == "__main__":

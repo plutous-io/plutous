@@ -31,5 +31,5 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def root():
+def root():
     return {"message": "Hello from Plutous API"}
