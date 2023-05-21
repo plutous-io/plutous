@@ -62,11 +62,19 @@ def downgrade(directory: Path, revision: str, **kwargs):
     command.downgrade(alembic_cfg, revision, **kwargs)
 
 
-def reset(schema:str):
-    sql = f'''
+def reset(schema: str):
+    logger.info(f'Resetting schema "{schema}"...')
+    reply = input(
+        f"Verify you are connected to the correct database ({engine.url.render_as_string()})![y/N]"
+    )
+    if reply.lower() != "y":
+        logger.info("Aborting...")
+        return
+
+    sql = f"""
     DROP SCHEMA "{schema}" CASCADE;
-    '''
-    
+    """
+
     with engine.connect() as conn:
         conn.execute(text(sql))
         conn.commit()
