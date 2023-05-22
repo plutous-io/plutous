@@ -1,15 +1,13 @@
 from typing import Iterable
 
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as _Session
 
-from plutous.database import engine
+from plutous.database import Session
 
 
-def get_session() -> Iterable[Session]:
-    conn = engine.connect()
-    session = Session(conn)
+def get_session() -> Iterable[_Session]:
+    session = Session()
     try:
         yield session
     finally:
         session.close()
-        conn.close()
