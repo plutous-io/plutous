@@ -45,5 +45,7 @@ class Enum(_Enum):
     schema = None
 
     def __init__(self, *args, **kwargs):
-        kwargs.pop("schema", None)
+        schema = kwargs.pop("schema", None)
+        if schema is not None:
+            self.schema = schema
         super().__init__(schema=self.schema, *args, **kwargs)
