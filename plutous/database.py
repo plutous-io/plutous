@@ -5,11 +5,14 @@ from alembic.config import Config as AlembicConfig
 from loguru import logger
 from sqlalchemy import MetaData, create_engine, text
 from sqlalchemy.engine import URL
+from sqlalchemy.orm import sessionmaker
 
 from plutous.config import config
 
 url = URL.create(drivername="postgresql+psycopg2", **config.db.dict())
 engine = create_engine(url)
+
+Session = sessionmaker(bind=engine)
 
 
 def _get_alembic_config(diretory: Path):
