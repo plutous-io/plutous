@@ -32,6 +32,7 @@ class Db(BaseModel):
 
 class Config(BaseConfig):
     db: Db
+    encryption_key: str
 
 
 config = Config.from_file()
