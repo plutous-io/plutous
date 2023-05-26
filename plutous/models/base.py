@@ -40,6 +40,15 @@ class BaseMixin:
             ),
         )
 
+    def __repr__(self):
+        columns = self.__dict__.keys()
+        column_values = ", ".join(
+            f"{col}={getattr(self, col)!r}"
+            for col in columns
+            if col != "_sa_instance_state"
+        )
+        return f"{self.__class__.__name__}({column_values})"
+
 
 class Enum(_Enum):
     schema = None
