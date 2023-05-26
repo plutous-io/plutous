@@ -23,6 +23,13 @@ class BaseMixin:
         onupdate=dt.utcnow,
     )
 
+    def dict(self) -> dict:
+        return {
+            key: attr
+            for key, attr in self.__dict__.items()
+            if key != "_sa_instance_state"
+        }
+
     @declared_attr.directive
     def __tablename__(cls) -> str:
         return re.sub("(?<!^)(?=[A-Z])", "_", cls.__name__).lower()
