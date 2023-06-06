@@ -33,6 +33,7 @@ class Db(BaseModel):
 class Config(BaseConfig):
     db: Db
     encryption_key: str
+    sentry_dsn: str | None = None
 
 
 config = Config.from_file()

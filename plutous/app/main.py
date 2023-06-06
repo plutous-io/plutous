@@ -1,6 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from plutous.config import config
+
+if config.sentry_dsn:
+    import sentry_sdk
+
+    sentry_sdk.init(config.sentry_dsn)
+
 app = FastAPI(
     title="Plutous API",
     version="0.0.1",

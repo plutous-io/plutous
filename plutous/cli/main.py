@@ -1,5 +1,12 @@
 from typer import Typer
 
+from plutous.config import config
+
+if config.sentry_dsn:
+    import sentry_sdk
+
+    sentry_sdk.init(config.sentry_dsn)
+
 app = Typer()
 apps = []
 
