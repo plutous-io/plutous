@@ -1,3 +1,4 @@
+from loguru import logger
 from typer import Typer
 
 from plutous.config import config
@@ -14,8 +15,8 @@ try:
     from plutous.trade.cli import main as trade
 
     apps.append(trade.app)
-except ImportError:
-    pass
+except ImportError as e:
+    logger.warning(e)
 
 for a in apps:
     app.add_typer(a)
