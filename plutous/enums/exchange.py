@@ -13,4 +13,5 @@ class Exchange(Enum):
     KUCOIN_FUTURES = "KucoinFutures"
     OKX = "Okx"
     PHEMEX = "Phemex"
+    UPBIT = "Upbit"
     WOO = "Woo"
