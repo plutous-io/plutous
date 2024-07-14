@@ -1,5 +1,5 @@
+import datetime as dt
 import re
-from datetime import datetime as dt
 
 from sqlalchemy import TIMESTAMP
 from sqlalchemy import Enum as _Enum
@@ -11,16 +11,16 @@ class BaseMixin:
     __name__: str
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    created_at: Mapped[dt] = mapped_column(
+    created_at: Mapped[dt.datetime] = mapped_column(
         TIMESTAMP,
-        default=dt.utcnow,
+        default=lambda: dt.datetime.now(dt.timezone.utc),
         nullable=False,
     )
-    updated_at: Mapped[dt] = mapped_column(
+    updated_at: Mapped[dt.datetime] = mapped_column(
         TIMESTAMP,
         nullable=False,
-        default=dt.utcnow,
-        onupdate=dt.utcnow,
+        default=lambda: dt.datetime.now(dt.timezone.utc),
+        onupdate=lambda: dt.datetime.now(dt.timezone.utc),
     )
 
     def dict(self) -> dict:
