@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plutous"
-version = "0.0.18"
+version = "0.0.19"
 description = "Plutous Library"
 packages = [{include = "plutous"}]
 authors = ["Cheun Hong <cheunhong@plutous.io>"]

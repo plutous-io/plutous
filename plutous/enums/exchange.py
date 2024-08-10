@@ -15,3 +15,4 @@ class Exchange(Enum):
     PHEMEX = "Phemex"
     UPBIT = "Upbit"
     WOO = "Woo"
+    MEXC = "Mexc"
