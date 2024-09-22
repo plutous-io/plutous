@@ -36,4 +36,4 @@ class Config(BaseConfig):
     sentry_dsn: str | None = None
 
 
-config = Config.from_file()
+CONFIG = Config.from_file()

@@ -7,9 +7,9 @@ from sqlalchemy import MetaData, create_engine, text
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker
 
-from plutous.config import config
+from plutous.config import CONFIG
 
-url = URL.create(drivername="postgresql+psycopg2", **config.db.model_dump())
+url = URL.create(drivername="postgresql+psycopg2", **CONFIG.db.model_dump())
 engine = create_engine(url)
 
 Session = sessionmaker(bind=engine)

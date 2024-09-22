@@ -1,13 +1,6 @@
 from loguru import logger
 from typer import Typer
 
-from plutous.config import config
-
-if config.sentry_dsn:
-    import sentry_sdk
-
-    sentry_sdk.init(config.sentry_dsn)
-
 app = Typer()
 apps = []
 
@@ -30,6 +23,13 @@ def start_server(
     reload: bool = True,
 ):
     import uvicorn
+
+    from plutous.config import CONFIG
+
+    if CONFIG.sentry_dsn:
+        import sentry_sdk
+
+        sentry_sdk.init(CONFIG.sentry_dsn)
 
     uvicorn.run(
         "plutous.app.main:app",
