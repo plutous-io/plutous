@@ -16,3 +16,4 @@ class Exchange(Enum):
     UPBIT = "Upbit"
     WOO = "Woo"
     MEXC = "Mexc"
+    LBANK = "LBank"
