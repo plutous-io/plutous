@@ -7,6 +7,7 @@ class Exchange(Enum):
     BINANCE_USDM = "BinanceUsdm"
     BITGET = "Bitget"
     BITMEX = "Bitmex"
+    BITUNIX = "Bitunix"
     BYBIT = "Bybit"
     COINBASE = "Coinbase"
     DERIBIT = "Deribit"
