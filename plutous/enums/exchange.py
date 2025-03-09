@@ -10,6 +10,8 @@ class Exchange(Enum):
     BITUNIX = "Bitunix"
     BYBIT = "Bybit"
     COINBASE = "Coinbase"
+    COINEX = "CoinEx"
+    COINW = "CoinW"
     DERIBIT = "Deribit"
     GATEIO = "GateIO"
     GEMINI = "Gemini"
